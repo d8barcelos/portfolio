@@ -15,6 +15,7 @@
         <ul>
           <li><a href="#home">Home</a></li>
           <li><a href="#sobre">Sobre</a></li>
+          <li><a href="#skills">Habilidades</a></li>
           <li><a href="#projetos">Projetos</a></li>
         </ul>
       </nav>
@@ -22,11 +23,11 @@
     <header class="header-container" id="home">
         <div>
         <h1>Diogo Barcelos</h1>
-        <h2>Front-end developer</h2>
+        <h2 id="typing-text"></h2>
         
         <div class="social-media">
-            <a href="https://github.com/d8barcelos">Github</a>
-            <a href="https://www.linkedin.com/in/diogo-barcelos/">Linkedin</a>
+            <a href="https://github.com/d8barcelos" target="_blank">Github</a>
+            <a href="https://www.linkedin.com/in/diogo-barcelos/" target="_blank">Linkedin</a>
         </div>
     </div>
     <img src="img.svg">
@@ -35,17 +36,31 @@
     <div class="about" id="sobre">
         <h1>Sobre mim</h1>
         <p>Olá, sou um desenvolvedor front-end com ampla experiência em HTML, CSS e JavaScript. Também tenho conhecimento em frameworks como ReactJS e habilidades em UI/UX design.
-
             Minha experiência com HTML e CSS inclui a criação de landing pages e layouts responsivos e adaptáveis, com um olhar atento para os detalhes visuais. Tenho um entendimento profundo do uso semântico do HTML e uso CSS para estilizar componentes e criar animações.
-            
             Além disso, possuo habilidades avançadas em JavaScript, que me permitem criar interações dinâmicas e implementar APIs em páginas web, bem como construir aplicações completas em ReactJS, também tenho conhecimento em PHP e desenvolvimento back-end e conexão com banco de dados SQL.
-            
             Trabalho com foco em criar interfaces intuitivas e agradáveis para o usuário, priorizando sempre a experiência do usuário final.</p>
     </div>
 
+    <div class="skills" id="skills">
+        <h1>Habilidades</h1>
+        <div class="card-skills">
+            <img class="skill-img" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="img1">
+            <img class="skill-img" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="img2">
+            <img class="skill-img" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="img3">
+            <img class="skill-img" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="img4">
+            <img class="skill-img" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg" alt="img5">
+            <img class="skill-img" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" alt="img6">
+            <img class="skill-img" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="img7">
+            <img class="skill-img" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg" alt="img8">
+            <img class="skill-img" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sass/sass-original.svg" alt="img9">
+        </div>
+    </div>
+      
+   
+
     <main class="container" id="projetos">
         <h1>Projetos</h1>
-        <a href="https://d8barcelos.github.io/weather-app/">
+        <a href="https://d8barcelos.github.io/weather-app/" target="_blank">
             <div class="card-container">
                 <div class="card">
                     <div class="card-wrapper">
@@ -60,7 +75,7 @@
                 de front-end e lógica de programação</p>
         </div>
         </div>
-        <a href="https://d8barcelos.github.io/product-card/">
+        <a href="https://d8barcelos.github.io/product-card/" target="_blank">
             <div class="card-container">
                 <div class="card">
                     <div class="card-wrapper">
@@ -72,7 +87,7 @@
                     <p>Product card feito com HTML e CSS. Nesse projeto utilizei diversas animações para fazer um card de produto que seja intuitivo ao usuário. Além disso, testei minhas habilidades de responsividade e de design de interface.</p>
                 </div>
             </div>
-        <a href="https://todo-list-1g72.vercel.app">
+        <a href="https://todo-list-1g72.vercel.app" target="_blank">
         <div class="card-container">
             <div class="card">
                 <div class="card-wrapper">
@@ -81,7 +96,7 @@
             </div>
         </a>
             <div class="card-text">
-                <p>Projeto de uma Todo list feita utilizando react.js, nesse projeto fui muito desafiado a aprimorar meus conhecimentos em react, aprendi a utilizar hooks, usar estados, classes e funções em react, salvar informações no local storage e criar componentes que serão manipulados pelo usuário.</p>
+                <p>Projeto de uma Todo list feita utilizando react.js, nesse projeto fui muito desafiado a aprimorar meus conhecimentos em react, aprendi a utilizar hooks, estados, classes e funções em react, salvar informações no local storage e criar componentes que serão manipulados pelo usuário.</p>
             </div>
         </div>
     </main>
@@ -89,6 +104,20 @@
         Feito por Diogo Barcelos
     </footer>
 
+    <script>
+    const text = "front end developer";
+    let i = 0;
+
+    function typing() {
+      if (i < text.length) {
+       document.getElementById("typing-text").innerHTML += text.charAt(i);
+       i++;
+    setTimeout(typing, 100);
+  }
+}
+
+typing();
+    </script>
 </body>
 
 </html>
