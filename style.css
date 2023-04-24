@@ -87,7 +87,7 @@ body {
 
 .header-container img {
     width: 30%;
-    margin-left: 20px;
+    text-align: right;
 }
 
 .header-container h1 {
@@ -183,6 +183,10 @@ body {
     font-size: 15px;
     text-align: center;
     margin-top: 10px;
+}
+
+.skills {
+    padding-top: 60px;
 }
 
 .skills h1 {
