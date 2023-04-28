@@ -97,45 +97,31 @@ body {
 }
 
 .header-container h2 {
-    text-transform: uppercase;
-    letter-spacing: 4px;
-    color: #40BDFF;
-}
-
-#typing-text {
-    font-size: 2rem;
-    font-weight: bold;
     color: #fff;
-    font-family: monospace;
-    white-space: nowrap;
-    overflow: hidden;
-    border-right: 0.15em solid #fff;
-    box-shadow: inset -0.15em 0 #fff;
-    width: 13em;
-    animation: typing 2s steps(20, end), blink 1s infinite;
-    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-size: 28px;
+    letter-spacing: 2px;
 }
-
-@keyframes typing {
-    from {
-        width: 0;
-    }
-
-    to {
-        width: 13em;
-    }
-}
-
-@keyframes blink {
-    50% {
-        border-color: transparent;
-        box-shadow: inset -0.15em 0 transparent;
-    }
-}
-
 
 .header-container img {
     width: 670px;
+}
+
+.animated-part.animate {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.5s ease forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .social-media {
@@ -220,9 +206,9 @@ body {
 
 @media screen and (max-width: 768px) {
     .skills {
-      padding-top: 20%;
+        padding-top: 20%;
     }
-  }
+}
 
 
 .container {
@@ -407,8 +393,4 @@ body {
     .footer {
         margin: 0;
     }
-}
-
-@media screen and (max-width: 440px) {
-   
 }
