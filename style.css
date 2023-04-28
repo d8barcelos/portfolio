@@ -279,6 +279,7 @@ body {
 .card-text {
     width: 40%;
     color: #ffffff;
+    letter-spacing: 2px;
 }
 
 .card-wrapper {
@@ -406,4 +407,8 @@ body {
     .footer {
         margin: 0;
     }
+}
+
+@media screen and (max-width: 440px) {
+   
 }
