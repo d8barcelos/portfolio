@@ -4,21 +4,21 @@ import { GradientText } from './shared/GradientText';
 
 const testimonials = [
   {
-    name: "João Silva",
-    role: "CTO @ TechCorp",
-    content: "Lucas é um desenvolvedor excepcional. Sua capacidade de resolver problemas complexos e entregar soluções elegantes é impressionante.",
-    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=150&h=150&q=80"
+    name: "Gustavo Borges",
+    role: "CTO @ Nevoa",
+    content: "Diogo é um desenvolvedor excepcional. Sua capacidade de resolver problemas complexos e entregar soluções é impressionante.",
+    image: "https://media.licdn.com/dms/image/v2/D4D03AQGngsaM1X_wBg/profile-displayphoto-shrink_400_400/B4DZN0i1F4G0Ag-/0/1732827108282?e=1741219200&v=beta&t=Yd4GjSUD1dQgjTEiI_WJDrbwWbEx9SR-gA_JgMuK77A"
   },
   {
     name: "Maria Santos",
     role: "Product Manager @ Startup",
-    content: "Trabalhar com o Lucas foi incrível. Ele não apenas entrega código de qualidade, mas também contribui com ótimas ideias para o produto.",
+    content: "Trabalhar com o Diogo foi incrível. Ele não apenas entrega código de qualidade, mas também contribui com ótimas ideias para o produto.",
     image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&h=150&q=80"
   },
   {
     name: "Pedro Costa",
     role: "Tech Lead @ Innovation",
-    content: "A dedicação do Lucas em criar código limpo e bem documentado é notável. Ele eleva o nível de qualquer equipe.",
+    content: "A dedicação do Diogo em criar código limpo e bem documentado é notável. Ele eleva o nível de qualquer equipe.",
     image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&h=150&q=80"
   }
 ];

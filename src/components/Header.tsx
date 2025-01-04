@@ -11,7 +11,7 @@ export function Header() {
           className="flex items-center gap-2"
         >
           <Code2 className="w-8 h-8" />
-          <span className="text-xl font-bold">Lucas</span>
+          <span className="text-xl font-bold">Diogo</span>
         </motion.div>
         
         <motion.div

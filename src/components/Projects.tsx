@@ -13,7 +13,9 @@ export function Projects() {
           className="text-center mb-20"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Projetos em Destaque
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-teal-400">
+              Projetos em Destaque
+            </span>
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
             Uma seleção dos meus melhores trabalhos, demonstrando minhas habilidades

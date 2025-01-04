@@ -60,7 +60,7 @@ export function Timeline() {
 
         <div className="relative">
           {/* Linha vertical */}
-          <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-blue-500 to-purple-600" />
+          <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-blue-400 to-teal-400" />
 
           {timeline.map((item, index) => (
             <motion.div

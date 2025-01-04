@@ -100,13 +100,14 @@ export function Hero() {
         <motion.div variants={itemVariants}>
           <motion.a
             href="#projects"
-            className="inline-block bg-gradient-to-r from-blue-500 to-purple-600 text-white px-12 py-5 rounded-full text-lg font-medium shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all"
+            className="inline-block bg-gradient-to-r from-blue-400 to-teal-400 text-white px-12 py-5 rounded-full text-lg font-medium shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
             Conheça meu trabalho
           </motion.a>
         </motion.div>
+
       </motion.div>
 
       <motion.div 

@@ -79,7 +79,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
           </motion.div>
         )}
         <motion.h3
-          className="text-2xl font-bold mb-3 bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-600"
+          className="text-2xl font-bold mb-3 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-teal-400"
           whileHover={{ scale: 1.02 }}
         >
           {project.title}

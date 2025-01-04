@@ -7,7 +7,7 @@ interface GradientTextProps {
 
 export function GradientText({ children, className = '' }: GradientTextProps) {
   return (
-    <span className={`bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-600 ${className}`}>
+    <span className={`bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-teal-400 ${className}`}>
       {children}
     </span>
   );

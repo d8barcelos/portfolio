@@ -1,11 +1,12 @@
 import { motion } from 'framer-motion';
-import { Github, Linkedin, Mail, Heart } from 'lucide-react';
+import { Github, Linkedin, Mail, Heart, Coffee } from 'lucide-react';
 import { socialLinks } from '../data/socialLinks';
 
 export function Footer() {
   return (
     <footer className="bg-white py-12 px-6">
       <div className="max-w-6xl mx-auto">
+        {/* Top Section */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -50,8 +51,7 @@ export function Footer() {
           >
             <h3 className="text-2xl font-bold mb-4">Localização</h3>
             <p className="text-gray-600">
-              Rondon, PR<br />
-              Brasil
+              ES, Brasil
             </p>
           </motion.div>
 
@@ -63,21 +63,29 @@ export function Footer() {
           >
             <h3 className="text-2xl font-bold mb-4">Disponibilidade</h3>
             <p className="text-gray-600">
-              Aberto a novas oportunidades<br />
-              Remoto ou Híbrido
+              <span className="flex items-center gap-2">
+                Seg a Sex: 9h às 18h - Coding & Coffee <Coffee className="w-4 h-4" />
+              </span>
             </p>
           </motion.div>
         </div>
 
+        {/* Divider */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="mt-12 pt-8 border-t border-gray-200 text-center"
+          className="mt-12 pt-8 border-t border-gray-200"
         >
-          <p className="text-gray-600 flex items-center justify-center gap-2">
-            Desenvolvido com <Heart className="w-4 h-4 text-red-500" /> por Lucas Langraff
-          </p>
+          {/* Bottom Section */}
+          <div className="flex flex-col md:flex-row items-center justify-between text-center text-gray-600 gap-6">
+            <p className="flex items-center justify-center gap-2">
+              Desenvolvido com <Heart className="w-4 h-4 text-red-500" /> por Diogo Barcelos
+            </p>
+            <p className="italic">
+            "Entre bugs e cafés, nascem grandes ideias."
+            </p>
+          </div>
         </motion.div>
       </div>
     </footer>

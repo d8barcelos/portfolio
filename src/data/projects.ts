@@ -3,8 +3,8 @@ export const projects = [
     title: ".NET 7 RPG game",
     description: "Projeto de um text-based RPG com funcionalidades completas de criação, leitura, atualização e exclusão de personagens em um mundo de RPG. Além disso, possui autenticação de usuário e autorização para proteger as operações. Inclui recursos de batalha, onde personagens lutam usando habilidades e armas, com estatísticas de batalha registradas e um sistema de pontuação para os melhores combatentes.",
     image: "https://blog.tubikstudio.com/wp-content/uploads/2016/11/back-end-development-1.jpg",
-    tags: ["C#", ".NET", "SQL Server", "Entity Framework",],
-    github: "https://github.com/Llangraff/Bibliotech",
+    tags: ["C#", ".NET 7", "SQL Server", "Entity Framework",],
+    github: "https://github.com/d8barcelos/dotnet-rpg",
     featured: true
   },
   {

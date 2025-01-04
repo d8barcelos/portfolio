@@ -8,6 +8,7 @@ import { Timeline } from './components/Timeline';
 import { Testimonials } from './components/Testimonials';
 import { Footer } from './components/Footer';
 import { LoadingScreen } from './components/LoadingScreen';
+import { Header } from './components/Header';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
