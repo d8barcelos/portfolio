@@ -5,8 +5,8 @@ interface BadgeProps {
 
 export function Badge({ children, variant = 'primary' }: BadgeProps) {
   const variants = {
-    primary: 'bg-gradient-to-r from-blue-400 to-teal-400 text-white',
-    secondary: 'text-blue-400 bg-teal-50',
+    primary: 'bg-gradient-to-r from-blue-500 to-teal-500 text-gray-900', // Contraste claro no texto
+    secondary: 'text-teal-300 bg-gray-800', // Fundo escuro e texto em tom brilhante
   };
 
   return (

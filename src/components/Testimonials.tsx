@@ -25,7 +25,7 @@ const testimonials = [
 
 export function Testimonials() {
   return (
-    <section className="py-32 px-6 bg-gradient-to-b from-white to-blue-50">
+    <section className="py-32 px-6 bg-gray-900">
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -36,7 +36,7 @@ export function Testimonials() {
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
             <GradientText>O que dizem sobre mim</GradientText>
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-400 max-w-2xl mx-auto">
             Feedback de pessoas com quem já trabalhei em projetos anteriores
           </p>
         </motion.div>
@@ -50,19 +50,19 @@ export function Testimonials() {
               viewport={{ once: true }}
               transition={{ delay: index * 0.2 }}
               whileHover={{ y: -10 }}
-              className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all"
+              className="bg-gray-800 p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all"
             >
-              <Quote className="w-12 h-12 text-blue-500 mb-6" />
-              <p className="text-gray-600 mb-6 italic">"{testimonial.content}"</p>
+              <Quote className="w-12 h-12 text-teal-400 mb-6" />
+              <p className="text-gray-400 mb-6 italic">"{testimonial.content}"</p>
               <div className="flex items-center gap-4">
                 <img
                   src={testimonial.image}
                   alt={testimonial.name}
-                  className="w-12 h-12 rounded-full object-cover"
+                  className="w-12 h-12 rounded-full object-cover border-2 border-gray-700"
                 />
                 <div>
-                  <h4 className="font-bold text-lg">{testimonial.name}</h4>
-                  <p className="text-gray-600">{testimonial.role}</p>
+                  <h4 className="font-bold text-lg text-gray-200">{testimonial.name}</h4>
+                  <p className="text-gray-400">{testimonial.role}</p>
                 </div>
               </div>
             </motion.div>

@@ -7,7 +7,7 @@ export function LoadingScreen() {
       initial={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
-      className="fixed inset-0 bg-white z-50 flex items-center justify-center"
+      className="fixed inset-0 bg-gray-900 z-50 flex items-center justify-center"
     >
       <motion.div
         initial={{ scale: 0.5, opacity: 0 }}
@@ -19,9 +19,9 @@ export function LoadingScreen() {
         }}
         className="relative"
       >
-        <Code2 className="w-16 h-16 text-blue-500" />
+        <Code2 className="w-16 h-16 text-teal-400" />
         <motion.div
-          className="absolute inset-0 border-2 border-blue-500 rounded-lg"
+          className="absolute inset-0 border-2 border-teal-400 rounded-lg"
           initial={{ scale: 1 }}
           animate={{ scale: 1.5, opacity: 0 }}
           transition={{

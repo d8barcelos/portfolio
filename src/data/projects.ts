@@ -5,7 +5,7 @@ export const projects = [
     image: "https://blog.tubikstudio.com/wp-content/uploads/2016/11/back-end-development-1.jpg",
     tags: ["C#", ".NET 7", "SQL Server", "Entity Framework",],
     github: "https://github.com/d8barcelos/dotnet-rpg",
-    featured: true
+    featured: false
   },
   {
     title: "Youtube Recap",
@@ -13,7 +13,7 @@ export const projects = [
     image: "https://m-cdn.phonearena.com/images/article/157259-wide-two_1200/YouTube-Music-Winter-2024-recap-is-finally-here.jpg",
     tags: ["Python", "Pandas", "Streamlit",],
     github: "https://github.com/d8barcelos/yt-content-insights",
-    featured: true
+    featured: false
   },
   {
     title: "Sistema de gestão de eventos",
@@ -21,7 +21,7 @@ export const projects = [
     image: "https://broscorp.net/wp-content/uploads/2022/11/back-end_developers-1024x621.png",
     tags: ["TypeScript", "NestJS", "GraphQL", "PostgreSQL",],
     github: "https://github.com/d8barcelos/events-planning",
-    featured: true
+    featured: false
   },
   {
     title: "API de solicitações",
@@ -29,6 +29,6 @@ export const projects = [
     image: "https://www.brasilcode.com.br/wp-content/uploads/2023/09/javascript-backend.webp",
     tags: ["C#", ".NET 8", "MongoDB", "Redis",],
     github: "https://github.com/d8barcelos/requests-api",
-    featured: true
+    featured: false
   }
 ];

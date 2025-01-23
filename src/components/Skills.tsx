@@ -31,7 +31,7 @@ const skills = [
 
 export function Skills() {
   return (
-    <section className="py-32 px-6 bg-white">
+    <section className="py-32 px-6 bg-gray-900 text-white">
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -42,7 +42,7 @@ export function Skills() {
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
             <GradientText>Minhas Habilidades</GradientText>
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-400 max-w-2xl mx-auto">
             Tecnologias e ferramentas que domino e utilizo para criar soluções inovadoras
           </p>
         </motion.div>
@@ -56,7 +56,7 @@ export function Skills() {
               viewport={{ once: true }}
               transition={{ delay: index * 0.2 }}
               whileHover={{ y: -10 }}
-              className="bg-white rounded-xl p-6 shadow-lg hover:shadow-2xl transition-all"
+              className="bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-2xl transition-all"
             >
               <div className={`bg-gradient-to-r ${skill.color} p-4 rounded-lg inline-block mb-4`}>
                 <skill.icon className="w-8 h-8 text-white" />
@@ -69,7 +69,7 @@ export function Skills() {
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.1 + itemIndex * 0.1 }}
-                    className="flex items-center gap-2"
+                    className="flex items-center gap-2 text-gray-300"
                   >
                     <Code2 className="w-4 h-4 text-blue-500" />
                     <span>{item}</span>

@@ -28,7 +28,7 @@ const timeline = [
     year: "2024",
     title: "Graduação em ADS",
     company: "Uninter",
-    description: "Me formei em análise e desenvolvimento de sistema.",
+    description: "Me formei em análise e desenvolvimento de sistemas.",
     icon: GraduationCap,
   },
   {
@@ -42,7 +42,7 @@ const timeline = [
 
 export function Timeline() {
   return (
-    <section className="py-32 px-6 bg-gradient-to-b from-blue-50 to-white">
+    <section className="py-32 px-6 bg-gray-900">
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -53,14 +53,14 @@ export function Timeline() {
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
             <GradientText>Minha Jornada</GradientText>
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-400 max-w-2xl mx-auto">
             Um breve histórico da minha trajetória profissional e acadêmica
           </p>
         </motion.div>
 
         <div className="relative">
-          {/* Linha vertical */}
-          <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-blue-400 to-teal-400" />
+          {/* Vertical line */}
+          <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-teal-500 to-blue-500" />
 
           {timeline.map((item, index) => (
             <motion.div
@@ -75,27 +75,27 @@ export function Timeline() {
             >
               <div className="w-5/12" />
               <div className="absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                <div className="w-12 h-12 rounded-full bg-white shadow-lg flex items-center justify-center">
-                  <Calendar className="w-6 h-6 text-blue-500" />
+                <div className="w-12 h-12 rounded-full bg-gray-800 shadow-lg flex items-center justify-center">
+                  <Calendar className="w-6 h-6 text-teal-400" />
                 </div>
               </div>
               <motion.div
                 whileHover={{ scale: 1.05 }}
-                className="w-5/12 bg-white p-6 rounded-xl shadow-lg relative"
+                className="w-5/12 bg-gray-800 p-6 rounded-xl shadow-lg relative"
               >
                 <div className="flex items-center gap-4 mb-4">
-                  <div className="p-3 rounded-lg bg-blue-50">
-                    <item.icon className="w-6 h-6 text-blue-500" />
+                  <div className="p-3 rounded-lg bg-gray-700">
+                    <item.icon className="w-6 h-6 text-teal-400" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold">{item.title}</h3>
-                    <p className="text-gray-600">{item.company}</p>
+                    <h3 className="text-xl font-bold text-gray-200">{item.title}</h3>
+                    <p className="text-gray-400">{item.company}</p>
                   </div>
                 </div>
-                <p className="text-gray-600">{item.description}</p>
+                <p className="text-gray-400">{item.description}</p>
 
-                {/* Ano posicionado no canto superior direito */}
-                <div className="absolute top-4 right-4 text-sm font-bold text-blue-500">
+                {/* Year positioned in upper right corner */}
+                <div className="absolute top-4 right-4 text-sm font-bold text-teal-400">
                   {item.year}
                 </div>
               </motion.div>

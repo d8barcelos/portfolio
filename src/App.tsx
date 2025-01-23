@@ -27,9 +27,11 @@ function App() {
         {isLoading && <LoadingScreen />}
       </AnimatePresence>
       
+      {/* Add AnimatedBackground outside the main div */}
+      <AnimatedBackground />
+      
       <div className="relative min-h-screen bg-white text-gray-900 overflow-hidden">
-        <AnimatedBackground />
-        <main>
+        <main className="relative z-10">
           <Hero />
           <Skills />
           <Projects />
