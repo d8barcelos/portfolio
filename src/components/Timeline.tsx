@@ -19,7 +19,7 @@ const timeline = [
   },
   {
     year: "2024",
-    title: "Desenvolvedor Back-End Júnior",
+    title: "Desenvolvedor Back-End",
     company: "Simple",
     description: "Assumi o cargo de desenvolvedor back-end júnior, ampliando meu aprendizado e experiência profissional.",
     icon: Briefcase,
