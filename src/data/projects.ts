@@ -30,5 +30,13 @@ export const projects = [
     tags: ["C#", ".NET 8", "MongoDB", "Redis",],
     github: "https://github.com/d8barcelos/requests-api",
     featured: false
+  },
+  {
+    title: "Healthtech",
+    description: "Projeto back-end de uma plataforma de saúde, a API possui autenticação JWT nas rotas, com um guard configurado para entender o contexto do usuário e definir o nível de acesso caso seja um paciente ou um médico. A aplicação permite criar consultas, enviar métricas de saúde e receber recomendações médiicas com base nas métricas. Além disso, possui um sistema de gerar PDF com as informações de saúde e as recomendações médicas.",
+    image: "https://i.pinimg.com/736x/07/d6/9a/07d69ae4bbef75df6310b6cb2b65bb6a.jpg",
+    tags: ["TypeScript", "NestJS", "SQLite",],
+    github: "https://github.com/d8barcelos/healthtech-platform",
+    featured: false
   }
 ];

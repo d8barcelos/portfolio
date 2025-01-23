@@ -70,7 +70,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
         >
           {project.title}
         </motion.h3>
-        <p className="text-gray-400 mb-4 text-sm line-clamp-3">{project.description}</p>
+        <p className="text-gray-400 mb-4 text-sm line-clamp-5">{project.description}</p>
         <div className="flex flex-wrap gap-2 mb-4">
           {project.tags.slice(0, 3).map((tag, tagIndex) => (
             <Badge key={tagIndex} className="bg-gray-700 text-gray-300 text-xs">

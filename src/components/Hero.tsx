@@ -39,7 +39,7 @@ export function Hero() {
       
       <motion.div 
         style={{ y, opacity }} 
-        className="absolute inset-0 bg-gradient-to-b from-gray-800/50 to-transparent pointer-events-none" 
+        className="absolute inset-0 bg-gradient-to-b from-transparent to-transparent pointer-events-none" 
       />
 
       <motion.div

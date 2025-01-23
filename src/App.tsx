@@ -28,10 +28,10 @@ function App() {
       </AnimatePresence>
       
       {/* Add AnimatedBackground outside the main div */}
-      <AnimatedBackground />
       
       <div className="relative min-h-screen bg-white text-gray-900 overflow-hidden">
         <main className="relative z-10">
+          <AnimatedBackground />
           <Hero />
           <Skills />
           <Projects />

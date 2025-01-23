@@ -52,7 +52,7 @@ export function Footer() {
           >
             <h3 className="text-2xl font-bold mb-4 text-gray-200">Localização</h3>
             <p className="text-gray-400">
-              ES, Brasil
+              SC, Brasil
             </p>
           </motion.div>
 
