@@ -38,5 +38,13 @@ export const projects = [
     tags: ["TypeScript", "NestJS", "SQLite",],
     github: "https://github.com/d8barcelos/healthtech-platform",
     featured: false
+  },
+  {
+    title: "Disk-Analyzer",
+    description: "Aplicação de alta performance de linha de comando que analisa o uso de disco de um diretório e exibe informações sobre o uso de espaço em disco. A aplicação é feita em Crystal e tem suporte a diversas configurações de comando para analises personalizadas.",
+    image: "https://www.cherryservers.com/v3/assets/blog/2022-09-15/04.png",
+    tags: ["Crystal", "Linux"],
+    github: "https://github.com/d8barcelos/disk_analyzer",
+    featured: false
   }
 ];
