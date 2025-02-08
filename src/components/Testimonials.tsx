@@ -7,7 +7,7 @@ const testimonials = [
     name: "Gustavo Borges",
     role: "CTO @ Nevoa",
     content: "Diogo é um desenvolvedor excepcional. Sua capacidade de resolver problemas complexos e entregar soluções é impressionante.",
-    image: "https://media.licdn.com/dms/image/v2/D4D03AQGngsaM1X_wBg/profile-displayphoto-shrink_400_400/B4DZN0i1F4G0Ag-/0/1732827108282?e=1741219200&v=beta&t=Yd4GjSUD1dQgjTEiI_WJDrbwWbEx9SR-gA_JgMuK77A"
+    image: "https://media.licdn.com/dms/image/v2/D4D03AQF-7yM5Eb20kQ/profile-displayphoto-shrink_200_200/B4DZTSukLPGcAg-/0/1738702210286?e=1744243200&v=beta&t=H5wxUzaijn1N-jbdXqFH0Tq2ZHThJcitxDPSPJA3TVs"
   },
   {
     name: "Maria Santos",
