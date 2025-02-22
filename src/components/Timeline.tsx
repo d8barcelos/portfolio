@@ -19,7 +19,7 @@ const timeline = [
   },
   {
     year: "2024",
-    title: "Desenvolvedor Back-End",
+    title: "Desenvolvedor Back-End Junior",
     company: "Simple",
     description: "Assumi o cargo de desenvolvedor back-end júnior, ampliando meu aprendizado e experiência profissional.",
     icon: Briefcase,
@@ -36,6 +36,13 @@ const timeline = [
     title: "Cursando Arquitetura de Software",
     company: "FIAP",
     description: "Comecei minha pós graduação em arquitetura de software na FIAP.",
+    icon: BookOpen,
+  },
+  {
+    year: "2025",
+    title: "Desenvolvedor Back-End Pleno",
+    company: "Unidesk",
+    description: "Assumi o cargo de desenvolvedor back-end pleno na Unidesk.",
     icon: BookOpen,
   }
 ];

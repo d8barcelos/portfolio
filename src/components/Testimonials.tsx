@@ -23,14 +23,58 @@ const testimonials = [
   }
 ];
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      duration: 0.5,
+      ease: "easeOut",
+      staggerChildren: 0.1
+    }
+  }
+};
+
+const titleVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+      ease: "easeOut"
+    }
+  }
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.4,
+      ease: "easeOut"
+    }
+  }
+};
+
 export function Testimonials() {
   return (
-    <section className="py-32 px-6 bg-gray-900">
-      <div className="max-w-6xl mx-auto">
+    <section className="py-32 px-6 bg-gray-900 overflow-hidden">
+      <motion.div 
+        className="max-w-6xl mx-auto"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ 
+          once: true,
+          amount: 0.2,
+          margin: "0px 0px -200px 0px"
+        }}
+        variants={containerVariants}
+      >
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          variants={titleVariants}
           className="text-center mb-20"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
@@ -45,16 +89,34 @@ export function Testimonials() {
           {testimonials.map((testimonial, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.2 }}
-              whileHover={{ y: -10 }}
-              className="bg-gray-800 p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all"
+              variants={cardVariants}
+              whileHover={{
+                y: -8,
+                transition: {
+                  duration: 0.2,
+                  ease: "easeOut"
+                }
+              }}
+              className="bg-gray-800 p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all transform-gpu"
             >
-              <Quote className="w-12 h-12 text-teal-400 mb-6" />
+              <motion.div
+                initial={{ scale: 0.8, opacity: 0 }}
+                whileInView={{ scale: 1, opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3, delay: index * 0.1 }}
+              >
+                <Quote className="w-12 h-12 text-teal-400 mb-6" />
+              </motion.div>
+              
               <p className="text-gray-400 mb-6 italic">"{testimonial.content}"</p>
-              <div className="flex items-center gap-4">
+              
+              <motion.div 
+                className="flex items-center gap-4"
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3, delay: index * 0.1 + 0.2 }}
+              >
                 <img
                   src={testimonial.image}
                   alt={testimonial.name}
@@ -64,11 +126,11 @@ export function Testimonials() {
                   <h4 className="font-bold text-lg text-gray-200">{testimonial.name}</h4>
                   <p className="text-gray-400">{testimonial.role}</p>
                 </div>
-              </div>
+              </motion.div>
             </motion.div>
           ))}
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

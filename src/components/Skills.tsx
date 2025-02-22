@@ -4,15 +4,15 @@ import { GradientText } from './shared/GradientText';
 
 const skills = [
   {
-    category: "Frontend",
+    category: "Front-end",
     icon: Layout,
     items: ["Angular", "TypeScript", "Next.js", "Bootstrap", "React"],
     color: "from-blue-500 to-cyan-500"
   },
   {
-    category: "Backend",
+    category: "Back-end",
     icon: Server,
-    items: ["C#", "Ruby", "NestJS", "Python", "Java"],
+    items: ["C#", ".NET", "NestJS", "Python", "Java"],
     color: "from-green-500 to-emerald-500"
   },
   {
@@ -29,14 +29,66 @@ const skills = [
   }
 ];
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2
+    }
+  }
+};
+
+const titleVariants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: "spring",
+      stiffness: 100,
+      damping: 20,
+      duration: 0.6
+    }
+  }
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: "spring",
+      stiffness: 100,
+      damping: 15,
+      duration: 0.5
+    }
+  }
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, x: -20 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      type: "spring",
+      stiffness: 100,
+      damping: 10
+    }
+  }
+};
+
 export function Skills() {
   return (
-    <section className="py-32 px-6 bg-gray-900 text-white">
+    <section className="py-32 px-6 bg-gray-900 text-white overflow-hidden">
       <div className="max-w-6xl mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          variants={titleVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
           className="text-center mb-20"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
@@ -47,38 +99,45 @@ export function Skills() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {skills.map((skill, index) => (
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+        >
+          {skills.map((skill) => (
             <motion.div
               key={skill.category}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.2 }}
-              whileHover={{ y: -10 }}
+              variants={cardVariants}
+              whileHover={{
+                y: -10,
+                transition: { type: "spring", stiffness: 300 }
+              }}
               className="bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-2xl transition-all"
             >
               <div className={`bg-gradient-to-r ${skill.color} p-4 rounded-lg inline-block mb-4`}>
                 <skill.icon className="w-8 h-8 text-white" />
               </div>
               <h3 className="text-2xl font-bold mb-4">{skill.category}</h3>
-              <ul className="space-y-2">
-                {skill.items.map((item, itemIndex) => (
+              <motion.ul
+                variants={containerVariants}
+                className="space-y-2"
+              >
+                {skill.items.map((item) => (
                   <motion.li
                     key={item}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.1 + itemIndex * 0.1 }}
+                    variants={itemVariants}
                     className="flex items-center gap-2 text-gray-300"
                   >
                     <Code2 className="w-4 h-4 text-blue-500" />
                     <span>{item}</span>
                   </motion.li>
                 ))}
-              </ul>
+              </motion.ul>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
