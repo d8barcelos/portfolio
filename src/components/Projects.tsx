@@ -1,4 +1,4 @@
-import { motion, useScroll, useInView } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { ProjectCard } from './projects/ProjectCard';
 import { projects } from '../data/projects';
 
@@ -43,16 +43,18 @@ const cardVariants = {
 };
 
 export function Projects() {
+  // Verifica se o dispositivo é mobile
+  const isMobile = typeof window !== "undefined" ? window.innerWidth < 768 : false;
+
   return (
-    <section id="projects" className="py-32 px-6 bg-gray-900 overflow-hidden">
+    <section id="projects" className="py-32 px-6 bg-gray-900 overflow-hidden min-h-screen">
       <motion.div 
         className="max-w-7xl mx-auto"
-        initial="hidden"
-        whileInView="visible"
+        initial={isMobile ? "visible" : "hidden"}
+        whileInView={isMobile ? undefined : "visible"}
         viewport={{ 
           once: true,
-          amount: 0.2, // Reduz a quantidade necessária do elemento visível para triggerar
-          margin: "0px 0px -200px 0px" // Margem negativa para começar a animação antes
+          amount: 0.5
         }}
         variants={containerVariants}
       >
