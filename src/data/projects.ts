@@ -12,7 +12,7 @@ export const projects = [
     description: "Aplicação em python que constrói uma recap dos seus videos assistidos no youtube por ano utilizando um arquivo json do google takeout. A aplicação possui uma interface gráfica feita utilizando o streamlit, o que permite opções para manipular e analisar os dados dos resultados de forma muito simples e dinâmica. A aplicação também é escalável e flexível, podendo ser utilizada com arquivos JSON de outras fontes de conteúdo.",
     image: "https://m-cdn.phonearena.com/images/article/157259-wide-two_1200/YouTube-Music-Winter-2024-recap-is-finally-here.jpg",
     tags: ["Python", "Pandas", "Streamlit",],
-    github: "https://github.com/d8barcelos/yt-content-insights",
+    github: "https://github.com/d8barcelos/py-youtube-recap",
     featured: false
   },
   {
