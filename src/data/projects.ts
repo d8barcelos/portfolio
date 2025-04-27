@@ -1,9 +1,9 @@
 export const projects = [
   {
-    title: ".NET 7 RPG game",
+    title: ".NET RPG game",
     description: "Projeto de um text-based RPG com funcionalidades completas de criação, leitura, atualização e exclusão de personagens em um mundo de RPG. Além disso, possui autenticação de usuário e autorização para proteger as operações. Inclui recursos de batalha, onde personagens lutam usando habilidades e armas, com estatísticas de batalha registradas e um sistema de pontuação para os melhores combatentes.",
     image: "https://blog.tubikstudio.com/wp-content/uploads/2016/11/back-end-development-1.jpg",
-    tags: ["C#", ".NET 7", "SQL Server", "Entity Framework",],
+    tags: ["C#", ".NET", "SQL Server", "Entity Framework",],
     github: "https://github.com/d8barcelos/dotnet-rpg",
     featured: false
   },
@@ -27,7 +27,7 @@ export const projects = [
     title: "API de solicitações",
     description: "API RESTful que gerencia solicitações de usuários, a aplicação utiliza um banco de dados NoSQL (MongoDB), além de um banco de dados em cache (Redis). A API possui autenticação JWT, garantindo a segurança das rotas e permitindo que usuários de diferentes funções acessem endpoints específicos.",
     image: "https://www.brasilcode.com.br/wp-content/uploads/2023/09/javascript-backend.webp",
-    tags: ["C#", ".NET 8", "MongoDB", "Redis",],
+    tags: ["C#", ".NET", "MongoDB", "Redis",],
     github: "https://github.com/d8barcelos/requests-api",
     featured: false
   },

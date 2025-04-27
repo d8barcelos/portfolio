@@ -4,11 +4,9 @@ import { AnimatedBackground } from './components/AnimatedBackground';
 import { Hero } from './components/Hero';
 import { Projects } from './components/Projects';
 import { Skills } from './components/Skills';
-import { Timeline } from './components/Timeline';
-import { Testimonials } from './components/Testimonials';
+import { Timeline } from './components/Timeline'; 
 import { Footer } from './components/Footer';
 import { LoadingScreen } from './components/LoadingScreen';
-import { Header } from './components/Header';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -36,7 +34,6 @@ function App() {
           <Skills />
           <Projects />
           <Timeline />
-          <Testimonials />
           <Footer />
         </main>
       </div>
