@@ -30,20 +30,6 @@ const timeline = [
     company: "Uninter",
     description: "Me formei em análise e desenvolvimento de sistemas.",
     icon: GraduationCap,
-  },
-  {
-    year: "2025",
-    title: "Cursando Arquitetura de Software",
-    company: "FIAP",
-    description: "Comecei minha pós graduação em arquitetura de software na FIAP.",
-    icon: BookOpen,
-  },
-  {
-    year: "2025",
-    title: "Desenvolvedor Back-End Pleno",
-    company: "Unidesk",
-    description: "Assumi o cargo de desenvolvedor back-end pleno na Unidesk.",
-    icon: BookOpen,
   }
 ];
 
