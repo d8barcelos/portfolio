@@ -1,0 +1,53 @@
+## The problem
+
+I wanted a focused sandbox to stress-test Entity Framework Core relationships,
+ASP.NET Core Identity, and controller/service layering — without the noise of a
+"real" product. Text-based RPGs turn out to be a near-perfect excuse: every
+feature maps cleanly onto back-end primitives. Character creation is a POST.
+Inventory is a join table. Combat is a transaction with side effects.
+
+## Architecture
+
+```
+┌──────────┐      ┌──────────────┐      ┌────────────────┐
+│  client  │ ───▶ │  Controllers │ ───▶ │    Services    │
+└──────────┘      └──────────────┘      └────────┬───────┘
+                         ▲                       │
+                         │                       ▼
+                   ┌─────┴──────┐         ┌──────────────┐
+                   │   Auth /   │         │   EF Core    │
+                   │  Identity  │         │  DbContext   │
+                   └────────────┘         └──────┬───────┘
+                                                 │
+                                          ┌──────▼───────┐
+                                          │  SQL Server  │
+                                          └──────────────┘
+```
+
+Three layers kept honest:
+
+- **Controllers** do HTTP: parse the request, call a service, return a DTO.
+- **Services** own domain rules. They don't know about HTTP and they don't
+  construct DbContexts — they receive them.
+- **EF Core** is the only thing that talks to SQL. No raw ADO, no SQL strings
+  leaking into services.
+
+## Key decisions
+
+- **Role-based authorization over policy-based.** The rule set is small and stable
+  (Player, Admin). Policies would have been overkill.
+- **Server-side character ownership filter.** Characters are always queried via
+  `Where(c => c.UserId == currentUserId)`. No route-level `id` is trusted.
+- **Migrations in source control.** Every schema change ships as a reviewable
+  file, not as `EnsureCreated`. A one-time cost; a lifetime of compounding
+  safety.
+
+## What I'd do differently
+
+- Split the monolithic `ICharacterService` into smaller query/command services.
+  It grew past a dozen methods before I noticed, which is the classic smell that
+  service-per-aggregate is overdue.
+- Add integration tests around the auth + ownership filter. Unit tests covered
+  happy paths; a real attacker doesn't write happy paths.
+- Swap SQL Server for PostgreSQL in the learning environment — nothing in this
+  project justifies the licensing surface.

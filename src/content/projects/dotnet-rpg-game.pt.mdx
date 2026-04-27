@@ -1,0 +1,56 @@
+## O problema
+
+Eu queria um sandbox focado pra estressar relacionamentos do Entity Framework
+Core, ASP.NET Core Identity e a separação entre controllers e services — sem
+o ruído de um produto "de verdade". RPG por texto acaba sendo a desculpa quase
+perfeita: cada feature mapeia limpo em primitivos de backend. Criar personagem
+é um POST. Inventário é uma tabela de junção. Combate é uma transação com
+efeito colateral.
+
+## Arquitetura
+
+```
+┌──────────┐      ┌──────────────┐      ┌────────────────┐
+│  client  │ ───▶ │  Controllers │ ───▶ │    Services    │
+└──────────┘      └──────────────┘      └────────┬───────┘
+                         ▲                       │
+                         │                       ▼
+                   ┌─────┴──────┐         ┌──────────────┐
+                   │   Auth /   │         │   EF Core    │
+                   │  Identity  │         │  DbContext   │
+                   └────────────┘         └──────┬───────┘
+                                                 │
+                                          ┌──────▼───────┐
+                                          │  SQL Server  │
+                                          └──────────────┘
+```
+
+Três camadas com papéis bem definidos:
+
+- **Controllers** fazem HTTP: leem a request, chamam um service, devolvem um DTO.
+- **Services** carregam as regras de domínio. Não sabem nada de HTTP e não
+  constroem `DbContext` — recebem.
+- **EF Core** é a única coisa que conversa com SQL. Sem ADO cru, sem string
+  SQL vazando pros services.
+
+## Decisões importantes
+
+- **Autorização baseada em roles em vez de policy.** O conjunto de regras é
+  pequeno e estável (Player, Admin). Policy seria overkill.
+- **Filtro de propriedade do personagem no servidor.** Personagem é sempre
+  consultado via `Where(c => c.UserId == currentUserId)`. Nenhum `id` que vem
+  da rota é confiável.
+- **Migrations no controle de versão.** Toda mudança de schema vira um arquivo
+  revisável, não um `EnsureCreated`. Custo único; benefício composto pro resto
+  da vida do projeto.
+
+## O que eu faria diferente
+
+- Quebrar o `ICharacterService` monolítico em services menores de query/command.
+- Ele cresceu pra mais de uma dúzia de métodos antes de eu perceber, que é o
+  cheiro clássico de que tava na hora de service por agregado.
+- Adicionar testes de integração em volta do filtro de auth + ownership.
+  Os testes unitários cobriram caminhos felizes; um atacante real não escreve
+  caminho feliz.
+- Trocar SQL Server por PostgreSQL no ambiente de estudo — nada nesse projeto
+  justifica a superfície de licenciamento.

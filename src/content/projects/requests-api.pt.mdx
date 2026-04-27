@@ -1,0 +1,53 @@
+## O problema
+
+Eu precisava de uma API REST onde o caminho de leitura era dominado por um
+conjunto pequeno de queries quentes: pega os últimos N, filtra por status,
+busca um por id. O formato perfeito pra um padrão cache-aside, e uma boa
+desculpa pra rodar MongoDB e Redis lado a lado num projeto que não era
+crítico de produção.
+
+## Arquitetura
+
+```
+┌──────────┐    ┌────────────┐    ┌────────┐    ┌──────────┐
+│  client  │ ─▶ │ Controllers│ ─▶ │  Cache │ ─▶ │ Services │
+└──────────┘    └────────────┘    │ (Redis)│    └────┬─────┘
+                                  └───┬────┘         │
+                                      │              ▼
+                                  miss│        ┌────────────┐
+                                      └──────▶ │  MongoDB   │
+                                               └────────────┘
+```
+
+O fluxo é deliberadamente sem graça:
+
+1. `GET /requests` → controller pergunta pro cache.
+2. Cache hit → devolve, fim.
+3. Cache miss → service consulta o Mongo, hidrata o cache, devolve.
+4. Escritas invalidam as chaves que tocam. Não é cache só por TTL — leitura
+   stale depois de escrita é o tipo de bug que ensina a se importar.
+
+## Decisões importantes
+
+- **JWT, não cookie de sessão.** A API não tem cliente browser; um bearer token
+  stateless tira fora uma classe inteira de preocupações de infra.
+- **BCrypt com salt por usuário.** Chato, correto e o default certo. Já tive
+  a conversa "por que não SHA-256" vezes demais — esse código deixa a próxima
+  pessoa pular essa.
+- **Auth por role nos controllers, checagem de propriedade nos services.**
+  Roles decidem *esse usuário pode chegar nesse endpoint?* Services decidem
+  *esse usuário pode encostar nesse registro?* Nenhum dos dois sozinho dá conta.
+- **Chaves de cache são função do formato da query.** Não é concatenação de
+  string com inputs aleatórios — um pequeno serializador que a suíte de testes
+  prende.
+
+## O que eu faria diferente
+
+- Introduzir um cache com escopo de request pra deduplicação dentro de uma
+  request. É uma mudança pequena com impacto desproporcional em endpoints
+  que disparam vários internamente.
+- Sair do `IMemoryCache` pra um cliente Redis unificado pros dois níveis;
+  manter dois caches no mesmo serviço é taxa de debug.
+- Adicionar um endpoint `/health/deps` que sonda Mongo e Redis com timeouts.
+  Dependências externas nunca falham com elegância por padrão — você tem que
+  desenhar a parte elegante.

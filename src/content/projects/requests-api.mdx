@@ -1,0 +1,50 @@
+## The problem
+
+I needed a REST API where the read path was dominated by a small set of hot
+queries: show me the latest N, filter by status, fetch one by id. The perfect
+shape for a cache-aside pattern, and a good excuse to run MongoDB and Redis
+side-by-side in a project that wasn't production-critical.
+
+## Architecture
+
+```
+┌──────────┐    ┌────────────┐    ┌────────┐    ┌──────────┐
+│  client  │ ─▶ │ Controllers│ ─▶ │  Cache │ ─▶ │ Services │
+└──────────┘    └────────────┘    │ (Redis)│    └────┬─────┘
+                                  └───┬────┘         │
+                                      │              ▼
+                                  miss│        ┌────────────┐
+                                      └──────▶ │  MongoDB   │
+                                               └────────────┘
+```
+
+The flow is deliberately boring:
+
+1. `GET /requests` → controller asks the cache.
+2. Cache hit → return, done.
+3. Cache miss → service queries Mongo, hydrates the cache, returns.
+4. Writes invalidate the keys they touch. Not a TTL-only cache — stale reads
+   after a write is the kind of bug that teaches you to care.
+
+## Key decisions
+
+- **JWT, not session cookies.** The API has no browser client; a stateless bearer
+  token removes a whole class of infrastructure concerns.
+- **BCrypt with a per-user salt.** Boring, correct, and the right default. I've
+  had the "why not SHA-256" conversation too many times — this code lets the
+  next person skip it.
+- **Role-based auth on controllers, ownership checks in services.** Roles decide
+  *can this user reach this endpoint?* Services decide *can this user touch this
+  record?* Neither alone is enough.
+- **Cache keys are a function of query shape.** Not a string concat of arbitrary
+  inputs — a small serialiser that the test suite pins down.
+
+## What I'd do differently
+
+- Introduce a request-scoped cache for within-request deduplication. It's a
+  small change with outsized impact on endpoints that fan out internally.
+- Move from `IMemoryCache` to a unified Redis client for both levels; keeping
+  two caches in one service is a debugging tax.
+- Add a `/health/deps` endpoint that probes Mongo and Redis with timeouts.
+  External dependencies never fail gracefully by default — you have to design
+  the graceful part.

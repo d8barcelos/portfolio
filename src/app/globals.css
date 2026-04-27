@@ -1,0 +1,179 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html[data-locale="en"] [data-locale-content="pt"],
+html[data-locale="pt"] [data-locale-content="en"] {
+  display: none;
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 6% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 240 6% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 6% 10%;
+
+    --muted: 240 5% 96%;
+    --muted-foreground: 240 4% 46%;
+
+    --accent: 38 100% 50%;
+    --accent-foreground: 240 6% 10%;
+
+    --border: 240 6% 90%;
+    --input: 240 6% 90%;
+    --ring: 38 100% 50%;
+
+    --terminal-bg: 120 6% 6%;
+    --terminal-fg: 130 70% 60%;
+    --terminal-dim: 130 20% 35%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 240 6% 6%;
+    --foreground: 0 0% 98%;
+
+    --card: 240 6% 8%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 240 6% 7%;
+    --popover-foreground: 0 0% 98%;
+
+    --muted: 240 4% 14%;
+    --muted-foreground: 240 5% 65%;
+
+    --accent: 38 100% 55%;
+    --accent-foreground: 240 10% 4%;
+
+    --border: 240 4% 16%;
+    --input: 240 4% 16%;
+    --ring: 38 100% 55%;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  html.hacker-mode {
+    --background: var(--terminal-bg);
+    --foreground: var(--terminal-fg);
+    --card: var(--terminal-bg);
+    --card-foreground: var(--terminal-fg);
+    --muted: 120 6% 10%;
+    --muted-foreground: var(--terminal-dim);
+    --accent: var(--terminal-fg);
+    --accent-foreground: var(--terminal-bg);
+    --border: 130 20% 20%;
+    --ring: var(--terminal-fg);
+  }
+
+  html.hacker-mode,
+  html.hacker-mode * {
+    font-family: var(--font-geist-mono), ui-monospace, monospace !important;
+  }
+
+  html.hacker-mode body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 60;
+    background: repeating-linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent 2px,
+      rgba(0, 0, 0, 0.18) 3px,
+      transparent 4px
+    );
+    mix-blend-mode: multiply;
+  }
+
+  html.hacker-mode body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 61;
+    background: radial-gradient(
+      ellipse at center,
+      transparent 55%,
+      rgba(0, 0, 0, 0.35) 100%
+    );
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-feature-settings:
+      "rlig" 1,
+      "calt" 1,
+      "ss01" 1;
+  }
+
+  ::selection {
+    background-color: hsl(var(--accent) / 0.3);
+    color: hsl(var(--foreground));
+  }
+
+  :focus-visible {
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer utilities {
+  .bg-grid {
+    background-image:
+      linear-gradient(to right, hsl(var(--border) / 0.4) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--border) / 0.4) 1px, transparent 1px);
+    background-size: 48px 48px;
+    background-position: -1px -1px;
+  }
+
+  .bg-noise {
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.5 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+    background-size: 160px 160px;
+  }
+
+  .bg-hero-glow {
+    background: radial-gradient(
+      ellipse 80% 50% at 50% 0%,
+      hsl(var(--accent) / 0.18),
+      transparent 60%
+    );
+  }
+
+  .mask-fade-b {
+    mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .text-pretty {
+    text-wrap: pretty;
+  }
+
+  .kbd {
+    @apply inline-flex h-5 min-w-[20px] items-center justify-center rounded border border-border bg-muted px-1.5 font-mono text-[10px] font-medium text-muted-foreground;
+  }
+}
